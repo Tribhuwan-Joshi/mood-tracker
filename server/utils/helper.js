@@ -9,7 +9,7 @@ const openai = new OpenAI({
 });
 
 const getAIResponse = async (mood, description) => {
-  const prompt = `Help to upflit my mood, my mood is ${mood} out of 5 right now. To describe more - ${description}. give geniune advice without being excessive optimistic, see feeling from my pov. blend your answer with Existentialism philosphy, give me answer in paragraph`;
+  const prompt = `Help to upflit my mood, my mood is ${mood} out of 5 right now. To describe more here is the description - ${description}.\n give geniune advice after anaylzing the description carefully `;
 
   const completion = await openai.chat.completions.create({
     model: "mistralai/mistral-7b-instruct:free",
