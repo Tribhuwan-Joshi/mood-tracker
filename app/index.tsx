@@ -1,14 +1,28 @@
 import { useState } from "react";
-import { Text, View, StyleSheet, TextInput, Button } from "react-native";
+import { Text, View, StyleSheet, TextInput, Button, Alert } from "react-native";
 import Slider from "@react-native-community/slider";
+import axios from "axios";
 
 export default function Index() {
   const [mood, setMood] = useState<number>(4); // setting default mood to 4
   const [description, setDescription] = useState<string>("");
+  const [responseMessage, setResponseMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleSubmit = () => {
-    console.log("Mood: ", mood);
-    console.log("Description: ", description);
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post("http://localhost:3000/mood-insights", {
+        mood,
+        description,
+      });
+      setResponseMessage(response.data.message);
+    } catch (error) {
+      console.error("Error submitting mood:", error);
+      Alert.alert("Error", "Something went wrong while submitting your mood.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   // get emoji according to the mood value (may remove in production)
