@@ -6,6 +6,11 @@ export default function Index() {
   const [mood, setMood] = useState<number>(4); // setting default mood to 4
   const [description, setDescription] = useState<string>("");
 
+  const handleSubmit = () => {
+    console.log("Mood: ", mood);
+    console.log("Description: ", description);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>How are you feeling today?</Text>
@@ -29,6 +34,8 @@ export default function Index() {
         value={description}
         onChangeText={setDescription}
       />
+
+      <Button title="Track it" onPress={handleSubmit} />
     </View>
   );
 }
