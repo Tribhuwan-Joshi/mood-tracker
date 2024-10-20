@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-
+import { StyleSheet, Dimensions } from "react-native";
+const { width: screenWidth } = Dimensions.get("window");
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -32,12 +32,17 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     textAlignVertical: "top",
   },
+  buttonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 3,
+  },
   responseContainer: {
     marginTop: 20,
     backgroundColor: "#333",
     padding: 10,
     borderRadius: 8,
-    width: "70%",
+    width: screenWidth > 768 ? "70%" : "90%",
   },
   responseText: {
     color: "#fff",

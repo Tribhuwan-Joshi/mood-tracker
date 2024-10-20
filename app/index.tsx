@@ -20,8 +20,14 @@ export default function Index() {
 
   const handleSubmit = async () => {
     setLoading(true);
+    if (description.trim().length == 0) {
+      alert("Please provide description");
+      setLoading(false);
+
+      return;
+    }
     try {
-      const response = await moodService.getInsights(mood, description);
+      const response = await moodService.getInsights(mood, description.trim());
       setResponseMessage(response);
     } catch (error) {
       console.error("Error submitting mood:", error);
@@ -84,10 +90,10 @@ export default function Index() {
         {loading ? (
           <ActivityIndicator size="large" color="#1EB1FC" />
         ) : (
-          <div style={{ display: "flex", gap: "6px" }}>
+          <View style={styles.buttonContainer}>
             <Button title={"Track it"} onPress={handleSubmit} />
             <Button title={"Clear"} onPress={resetResponse} />
-          </div>
+          </View>
         )}
 
         {responseMessage && (

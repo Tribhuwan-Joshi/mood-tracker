@@ -15,6 +15,9 @@ app.get("/", (req, res) => {
 
 app.post("/mood-insights", async (req, res) => {
   const { mood, description } = req.body;
+  if (!description) {
+    return res.status(400).json({ error: "Please provide description" });
+  }
   const response = await getAIResponse(mood, description); // Here, I am using clean architecture: our choice of LLM model and fetching method should be separated from the main endpoint.
 
   res.status(200).json({ response });
