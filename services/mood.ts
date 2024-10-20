@@ -9,7 +9,7 @@ const getInsights = async (
   mood: number,
   description: string
 ): Promise<string> => {
-  const insights = await axios.post<ResponseType>(`${baseURL}/mood-insights"`, {
+  const insights = await axios.post<ResponseType>(`${baseURL}/mood-insights`, {
     mood,
     description,
   });
