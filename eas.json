@@ -3,13 +3,16 @@
     "version": ">= 12.5.4",
     "appVersionSource": "remote"
   },
-  "build": {
+ "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+        "android": {
+        "buildType": "apk"
+      }
     },
     "production": {
       "autoIncrement": true
