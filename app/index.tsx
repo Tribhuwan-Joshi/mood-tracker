@@ -90,7 +90,7 @@ export default function Index() {
           <ActivityIndicator size="large" color="#1EB1FC" />
         ) : (
           <View style={styles.buttonContainer}>
-            <Button title={"Track it"} onPress={handleSubmit} />
+            <Button title={"Get Insight"} onPress={handleSubmit} />
             <Button title={"Clear"} onPress={resetResponse} />
           </View>
         )}
