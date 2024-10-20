@@ -30,7 +30,6 @@ export default function Index() {
       const response = await moodService.getInsights(mood, description.trim());
       setResponseMessage(response);
     } catch (error) {
-      console.error("Error submitting mood:", error);
       Alert.alert("Error", "Something went wrong while submitting your mood.");
     } finally {
       setLoading(false);

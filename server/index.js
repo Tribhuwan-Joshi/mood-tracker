@@ -20,7 +20,7 @@ app.post("/mood-insights", async (req, res) => {
   }
   const response = await getAIResponse(mood, description); // Here, I am using clean architecture: our choice of LLM model and fetching method should be separated from the main endpoint.
 
-  res.status(200).json({ response });
+  res.status(200).json({ success: true, response }); // adding success field to distinguish between 2xx/3xx to 4xx/5xx
 });
 
 app.use(errorHandler);
