@@ -25,6 +25,8 @@ app.post("/mood-insights", async (req, res) => {
 
 app.use(errorHandler);
 
+app.get("*", (req, res) => res.status(404).send("unknown endpoint"));
+
 app.listen(config.PORT, () =>
   console.log("server listening at port", config.PORT)
 );
