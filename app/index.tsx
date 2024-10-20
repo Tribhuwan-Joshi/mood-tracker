@@ -11,6 +11,24 @@ export default function Index() {
     console.log("Description: ", description);
   };
 
+  // get emoji according to the mood value (may remove in production)
+  const getMoodEmoji = (moodValue: number): string => {
+    switch (moodValue) {
+      case 1:
+        return "😭";
+      case 2:
+        return "😢";
+      case 3:
+        return "😐";
+      case 4:
+        return "😊";
+      case 5:
+        return "😄";
+      default:
+        return "";
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>How are you feeling today?</Text>
@@ -25,7 +43,9 @@ export default function Index() {
         minimumTrackTintColor="#1EB1FC"
         maximumTrackTintColor="#8e8e93"
       />
-      <Text style={styles.text}>Mood: {mood}</Text>
+      <Text style={styles.text}>
+        Mood: {mood} {getMoodEmoji(mood)}
+      </Text>
 
       <TextInput
         style={styles.input}
